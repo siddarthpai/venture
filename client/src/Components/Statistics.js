@@ -3,7 +3,7 @@ import React from "react";
 const Company = () => {
   return (
     <div>
-      <h1 className="bg-black">Test Company</h1>
+      <h1 className="bg-black">Stats section</h1>
     </div>
   );
 };
