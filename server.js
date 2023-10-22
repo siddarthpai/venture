@@ -1,14 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
-
-const uri =
-  "mongodb+srv://siddarthdpai:abcde@cluster0.m63aogy.mongodb.net/?retryWrites=true&w=majority";
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
+const DB = process.env.DATABASE.replace(
+  "<password>",
+  process.env.DATABASE_PASSWORD
+);
 
 const app = express();
 
 app.use(express.json());
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const personSchema = new mongoose.Schema({
   name: String,
@@ -28,6 +31,6 @@ app.get("/api/genderCount", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
+app.listen(8000, () => {
   console.log("Server started on port 5000");
 });
